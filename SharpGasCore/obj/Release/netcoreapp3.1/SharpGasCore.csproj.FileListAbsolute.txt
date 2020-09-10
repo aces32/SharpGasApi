@@ -1,0 +1,9 @@
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\bin\Release\netcoreapp3.1\SharpGasCore.deps.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\bin\Release\netcoreapp3.1\SharpGasCore.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\bin\Release\netcoreapp3.1\SharpGasCore.pdb
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.csprojAssemblyReference.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.AssemblyInfoInputs.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.AssemblyInfo.cs
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.csproj.CoreCompileInputs.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasCore\obj\Release\netcoreapp3.1\SharpGasCore.pdb

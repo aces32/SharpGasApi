@@ -57,6 +57,8 @@ namespace SharpGas
             {
                 endpoints.MapControllers();
             });
+
+            app.UseStatusCodePages();
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasData.deps.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasData.runtimeconfig.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasData.runtimeconfig.dev.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasData.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasData.pdb
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasCore.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Release\netcoreapp3.1\SharpGasCore.pdb
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.csprojAssemblyReference.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.AssemblyInfoInputs.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.AssemblyInfo.cs
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.csproj.CoreCompileInputs.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.csproj.CopyComplete
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.pdb
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Release\netcoreapp3.1\SharpGasData.genruntimeconfig.cache
