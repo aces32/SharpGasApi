@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SharpGasCore.Models;
@@ -14,13 +16,14 @@ using SharpGasData.Services;
 
 namespace SharpGas.Controllers
 {
+    //[Authorize]
     [ApiController]
     public class OnboardingController : ControllerBase
     {
         private readonly IOnboardingRepository onboarding;
         private readonly IMapper mapper;
 
-        public OnboardingController(IOnboardingRepository onboarding, 
+        public OnboardingController(IOnboardingRepository onboarding,
             IMapper mapper)
         {
             this.onboarding = onboarding;
@@ -28,9 +31,11 @@ namespace SharpGas.Controllers
         }
 
         [HttpPost, Route("api/Onboarding/Login")]
-        public ActionResult<IEnumerable<LoginResponseDto>> SharpGasLogin(LoginDto login)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<ActionResult<IEnumerable<LoginResponseDto>>> SharpGasLogin(LoginDto login)
         {
-            var customer = onboarding.Login(login);
+            var customer = await onboarding.LoginAsync(login);
             if (customer.ToList().Count == 0)
             {
                 return NoContent();
@@ -39,32 +44,32 @@ namespace SharpGas.Controllers
         }
 
         [HttpPost, Route("api/Onboarding/SignUp")]
-        public ActionResult<SignUpResponseDto> SharpGasSignUp(SignUpDto signUp)
+        public async Task<ActionResult<SignUpResponseDto>> SharpGasSignUp(SignUpDto signUp)
         {
-            if (onboarding.CustomerExist(signUp.email.Trim()))
+            if (await onboarding.CustomerExistAsync(signUp.email.Trim()))
             {
                 return StatusCode(409, new SignUpResponseDto { ResponseDescription = "Email Already Exist" });
             }
 
             var param = mapper.Map<Customers>(signUp);
             onboarding.SignUp(param);
-            onboarding.Commit();
+            await onboarding.CommitAsync();
             var customerToReturn = mapper.Map<SignUpResponseDto>(param);
             return CreatedAtRoute("GetCustomer", new { customerToReturn.CustomerId }, customerToReturn);
 
         }
 
         [HttpGet("{CustomerId}", Name = "GetCustomer")]
-        public IActionResult GetCustomer(Guid customerId)
+        public async Task<IActionResult> GetCustomer(Guid customerId)
         {
-            var customerFromRepo = onboarding.GetCustomer(customerId);
+            var customerFromRepo = await onboarding.GetCustomerAsync(customerId);
 
-            if (customerFromRepo == null)
+            if (customerFromRepo.FirstOrDefault() == null)
             {
                 return NotFound();
             }
 
-            return Ok(mapper.Map<SignUpResponseDto>(customerFromRepo));
+            return Ok(mapper.Map<SignUpResponseDto>(customerFromRepo.FirstOrDefault()));
         }
 
     }

@@ -9,7 +9,7 @@ using SharpGasCore.Models;
 
 namespace SharpGasData.Services
 {
-    public class GasRepository : IGasRepository
+    public class GasRepository : IGasRepository, IDisposable
     {
         private readonly SharpGasContext sharpGasContext;
 
@@ -39,6 +39,11 @@ namespace SharpGasData.Services
         public GasInformation GetGasRecord(Guid gasID)
         {
             return sharpGasContext.GasInformation.Where(x => x.GasId == Convert.ToInt32(gasID)).FirstOrDefault();
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)sharpGasContext).Dispose();
         }
     }
 }

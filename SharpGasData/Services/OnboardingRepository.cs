@@ -6,31 +6,34 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SharpGasData.Services
 {
-    public class OnboardingRepository : IOnboardingRepository
+    public class OnboardingRepository : IOnboardingRepository, IDisposable
     {
-        private readonly SharpGasContext sharpGasContext;
+        private SharpGasContext sharpGasContext;
+        private bool disposedValue;
 
         public OnboardingRepository(SharpGasContext sharpGasContext)
         {
             this.sharpGasContext = sharpGasContext;
         }
 
-        public int Commit()
+        public async Task<int> CommitAsync()
         {
-            return sharpGasContext.SaveChanges();
+            return await sharpGasContext.SaveChangesAsync();
         }
 
-        public bool CustomerExist(string emailAddress)
+        public async Task<bool> CustomerExistAsync(string emailAddress)
         {
-            return sharpGasContext.Customers.Any(data => data.EmailAddress == emailAddress);
+            return await sharpGasContext.Customers.AnyAsync(data => data.EmailAddress == emailAddress);
         }
 
-        public IEnumerable<Customers> Login(LoginDto login)
+        public async Task<IEnumerable<Customers>> LoginAsync(LoginDto login)
         {
-            return sharpGasContext.Customers.Where(s => s.EmailAddress == login.email && s.Password == login.password);
+            return await sharpGasContext.Customers.Where(s => s.EmailAddress == login.email && s.Password == login.password).ToListAsync();
         }
 
         public void SignUp(Customers signUp)
@@ -38,9 +41,34 @@ namespace SharpGasData.Services
             sharpGasContext.Customers.Add(signUp);
         }
 
-        public Customers GetCustomer(Guid customerID)
+        public async Task<IEnumerable<Customers>> GetCustomerAsync(Guid customerID)
         {
-            return sharpGasContext.Customers.Where(x => x.CustomerId == Convert.ToInt32(customerID)).FirstOrDefault();
+            return await sharpGasContext.Customers.Where(x => x.CustomerId == Convert.ToInt32(customerID)).ToListAsync();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                    if (sharpGasContext != null)
+                    {
+                        sharpGasContext.Dispose();
+                        sharpGasContext = null;
+                    }
+                }
+
+                disposedValue = true;
+            }
+        }
+
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

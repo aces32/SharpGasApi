@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using SharpGasData.Entites;
+using SharpGasData.Entities;
 
 namespace SharpGasData.Models
 {
@@ -18,6 +19,7 @@ namespace SharpGasData.Models
 
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<GasInformation> GasInformation { get; set; }
+        public virtual DbSet<EncryptionKeys> EncryptionKeys { get; set; }
 
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //        {

@@ -2,16 +2,17 @@
 using SharpGasData.Entites;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SharpGasData.Services
 {
     public interface IOnboardingRepository
     {
         void SignUp(Customers signUp);
-        bool CustomerExist(string emailAddress);
-        IEnumerable<Customers> Login(LoginDto login);
-        Customers GetCustomer(Guid customerID);
-        int Commit();
+        Task<bool> CustomerExistAsync(string emailAddress);
+        Task<IEnumerable<Customers>> LoginAsync(LoginDto login);
+        Task<IEnumerable<Customers>> GetCustomerAsync(Guid customerID);
+        Task<int> CommitAsync();
 
     }
 }
