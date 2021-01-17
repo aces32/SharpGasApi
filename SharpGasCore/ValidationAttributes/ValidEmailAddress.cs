@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpGasCore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -11,7 +12,12 @@ namespace SharpGasCore.ValidationAttributes
         protected override ValidationResult IsValid(object value,
             ValidationContext validationContext)
         {
-            var emailAddress = (string)value;
+            string decryptedVal = DecryptionUtil.RSADecrypt(value.ToString());
+            if (string.IsNullOrEmpty(decryptedVal))
+            {
+                return new ValidationResult(FormatErrorMessage("Make sure your email address is encrypted"));
+            }
+            var emailAddress = (string)decryptedVal;
             string expression = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
             if (!string.IsNullOrEmpty(emailAddress))
             {

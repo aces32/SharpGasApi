@@ -15,7 +15,7 @@ namespace SharpGasCore.Profiles
             CreateMap<Customers, SignUpResponseDto>();
             CreateMap<SignUpDto, Customers>().ForMember(
                                 dest => dest.EmailAddress, 
-                                opt => opt.MapFrom(src => src.email));
+                                opt => opt.MapFrom(src => src.Email));
         }
 
     }

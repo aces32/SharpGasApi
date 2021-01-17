@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -17,8 +19,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using SharpGas.Configuration;
 using SharpGas.Encryption;
+using SharpGasCore.ConfigurationSettings;
 using SharpGasCore.MidddleWare;
 using SharpGasData.Models;
 using SharpGasData.Services;
@@ -54,14 +58,13 @@ namespace SharpGas
                     //,  x => x.MigrationsAssembly("SharpGas.Migrations")
                     );
             });
-            //services.AddDataProtection().UseCryptographicAlgorithms(new AuthenticatedEncryptionSettings()
-            //{
-            //    EncryptionAlgorithm = EncryptionAlgorithm.AES_256_GCM,
-            //    ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
-            //}); 
+ 
+            StaticConfiguration.PRIVATEXML = settings.PRIVATEXML;
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IOnboardingRepository, OnboardingRepository>();
             services.AddScoped<IGasRepository, GasRepository>();
+            services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -91,6 +94,61 @@ namespace SharpGas
                 //    RoleClaimType = JwtClaimTypes.Role
                 //};
             });
+            services
+            .AddMvcCore(options =>
+            {
+                    options.RequireHttpsPermanent = true; // does not affect api requests
+                    options.RespectBrowserAcceptHeader = true; // false by default.
+                })
+            .AddFormatterMappings(); // JSON, or you can build your own custom one (above)
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc(
+                    "SharpGasOpenAPISpecification",
+
+                    new OpenApiInfo()
+                    {
+                        Title = "SharpGas API",
+                        Version = "1"
+                    });
+
+                setupAction.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                 Type = ReferenceType.SecurityScheme,
+                                 Id = "Bearer"
+                            },
+                                 Scheme = "oauth2",
+                                 Name = "Bearer",
+                                 In = ParameterLocation.Header,
+
+                         },
+                            new List<string>()
+                    }
+                });
+
+
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                var xmlCoreCommentsFullPath = Path.Combine(settings.SharpGasCorePath, xmlCommentFile);
+                setupAction.IncludeXmlComments(xmlCommentsFullPath);
+                setupAction.IncludeXmlComments(xmlCoreCommentsFullPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,9 +159,22 @@ namespace SharpGas
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<EncryptionMiddleWare>();
+            app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true) // allow any origin
+            .AllowCredentials());
+
+            //app.UseMiddleware<EncryptionMiddleWare>();
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint("./swagger/SharpGasOpenAPISpecification/swagger.json", "SharpGas API");
+                setupAction.RoutePrefix = "";
+            });
 
             app.UseRouting();
 

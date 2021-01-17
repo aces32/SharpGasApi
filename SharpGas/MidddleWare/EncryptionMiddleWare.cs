@@ -76,7 +76,7 @@ namespace SharpGasCore.MidddleWare
                         MemoryStream stream = new MemoryStream(byteArray);
                         return (stream, "Success");
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         return (strText, "Exception");
                     }

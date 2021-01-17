@@ -18,23 +18,23 @@ namespace SharpGas.Encryption
             signingAudienceCertificate = new SigningAudienceCertificate(options);
         }
 
-        public string GetToken()
+        public (string, DateTime?) GetToken(int expiryPeriod)
         {
-            SecurityTokenDescriptor tokenDescriptor = GetTokenDescriptor();
+            SecurityTokenDescriptor tokenDescriptor = GetTokenDescriptor(expiryPeriod);
             var tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken securityToken = tokenHandler.CreateToken(tokenDescriptor);
             string token = tokenHandler.WriteToken(securityToken);
 
-            return token;
+            return (token, tokenDescriptor.Expires);
         }
 
-        private SecurityTokenDescriptor GetTokenDescriptor()
+        private SecurityTokenDescriptor GetTokenDescriptor(int expiryPeriod)
         {
-            const int expiringDays = 7;
+            int expiringHrs = expiryPeriod + 1;
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Expires = DateTime.UtcNow.AddDays(expiringDays),
+                Expires = DateTime.UtcNow.AddHours(expiringHrs),
                 SigningCredentials = signingAudienceCertificate.GetAudienceSigningKey()
             };
 

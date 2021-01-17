@@ -5,29 +5,75 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Services.WebApi.Jwt;
 using SharpGas.Encryption;
+using SharpGasCore.Models;
+using SharpGasData.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SharpGas.Controllers
 {
+    /// <summary>
+    ///  authenticate users before generating token for specified api calls
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
         private readonly AuthenticationService authenticationService;
+        private readonly IAuthenticationRepository authenticationRepository;
 
-        public AuthenticationController(AuthenticationService authenticationService)
+        /// <summary>
+        /// AuthenticationController
+        /// </summary>
+        /// <param name="authenticationService"></param>
+        /// <param name="authenticationRepository"></param>
+        public AuthenticationController(AuthenticationService authenticationService,
+            IAuthenticationRepository authenticationRepository)
         {
             this.authenticationService = authenticationService;
+            this.authenticationRepository = authenticationRepository;
         }
 
+        /// <summary>
+        /// endpoint toauthenticate users before generating token for specified api calls
+        /// </summary>
+        /// <param name="userCredentials"></param>
+        /// <returns></returns>
+
         [HttpPost]
-        public IActionResult Authenticate([FromBody] UserCredentials userCredentials)
+        public async Task<ActionResult<DefaultResponse<AuthenticationResponseDto>>> Authenticate([FromBody] UserCredentials userCredentials)
         {
             try
             {
-                string token = authenticationService.Authenticate(userCredentials);
-                return Ok(token);
+                var validateAPIUsr = await authenticationRepository.AuthenticateAsync(userCredentials);
+                if (validateAPIUsr == null)
+                {
+                    return StatusCode(500, new DefaultResponse<AuthenticationResponseDto>
+                    {
+                        Message = "An error occured validating Api User"
+                    });
+                }
+                else if (validateAPIUsr.ToList().Count <= 0)
+                {
+                    return StatusCode(404, new DefaultResponse<AuthenticationResponseDto>
+                    {
+                        Message = "Invalid Api User"
+                    });
+                }
+                else
+                {
+                    var (token, expiryPeriod) = authenticationService.Authenticate(validateAPIUsr.FirstOrDefault().expiryLength);
+                    return Ok(new DefaultResponse<AuthenticationResponseDto>
+                    {
+                        Message = "Success",
+                        Data = new AuthenticationResponseDto
+                        {
+                            BearerToken = token,
+                            ExpiryPeriod = expiryPeriod
+                        }
+                    });
+                }
+
             }
             catch (InvalidCredentialsException)
             {

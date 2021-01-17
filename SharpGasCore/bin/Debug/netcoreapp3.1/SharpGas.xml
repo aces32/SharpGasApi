@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpGasCore</name>
+    </assembly>
+    <members>
+        <member name="T:SharpGas.Configuration.AppSettings">
+            <summary>
+            Application configuration settings
+            </summary>
+        </member>
+        <member name="P:SharpGas.Configuration.AppSettings.EncryptionKey">
+            <summary>
+            Encrption key
+            </summary>
+        </member>
+        <member name="P:SharpGas.Configuration.AppSettings.PUBLICXML">
+            <summary>
+            public key
+            </summary>
+        </member>
+        <member name="P:SharpGas.Configuration.AppSettings.PRIVATEXML">
+            <summary>
+            Private key
+            </summary>
+        </member>
+        <member name="P:SharpGas.Configuration.AppSettings.SharpGasCorePath">
+            <summary>
+            Path for the class libary sharpgas core documentation
+            </summary>
+        </member>
+        <member name="P:SharpGas.Configuration.AppSettings.SharpGasConnectionString">
+            <summary>
+            Connection string for dapper connection
+            </summary>
+        </member>
+        <member name="P:SharpGas.Encryption.UserCredentials.Username">
+            <summary>
+            Username for authentication to generate token
+            </summary>
+        </member>
+        <member name="P:SharpGas.Encryption.UserCredentials.Password">
+            <summary>
+            Username for authentication to generate token
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Helpers.DapperDAO`1">
+            <summary>
+            Utility Class to Access any Database using Dapper as ORM
+            </summary>
+            <typeparam name="T">Object Datatype to work with</typeparam>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetObjectAsync(System.Data.Common.DbConnection,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Data.CommandType)">
+            <summary>
+            Get Object from Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns>Generic Type</returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetObjectNoParam(System.Data.Common.DbConnection,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Get Object from Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <returns>Generic Type</returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetObject(System.Data.Common.DbConnection,System.String,System.Data.CommandType)">
+            <summary>
+            Get Object from Database without Parameters in Dictionary Object
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns>Generic Type</returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetListAsync(System.Data.Common.DbConnection,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Data.CommandType)">
+            <summary>
+            Get Object List from Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetListWithParam(System.Data.Common.DbConnection,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Get Object List from Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetList(System.Data.Common.DbConnection,System.String,System.Data.CommandType)">
+            <summary>
+            Get Object List from Database without Parameters in Dictionary Object
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.GetListNoParam(System.Data.Common.DbConnection,System.String)">
+            <summary>
+            Get Object List from Database without Parameters in Dictionary Object
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.SetObject(System.Data.Common.DbConnection,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Data.CommandType)">
+            <summary>
+            Insert Object to Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns>Generic Type</returns>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DapperDAO`1.SetObjectGetOpenDirectionParam(System.Data.Common.DbConnection,System.Object,System.String,System.Data.CommandType)">
+            <summary>
+            Insert Object to Database 
+            </summary>
+            <param name="dbConnection">Oracle or SQL Server</param>
+            <param name="paras">Parameters</param>
+            <param name="procName">Command Text or Stored Procedure Name</param>
+            <param name="commandType">StoredProc or Text</param>
+            <returns>Generic Type</returns>
+        </member>
+        <member name="T:SharpGasCore.Helpers.DecryptionUtil">
+            <summary>
+            Encryption Helper
+            </summary>
+        </member>
+        <member name="M:SharpGasCore.Helpers.DecryptionUtil.RSADecrypt(System.String)">
+            <summary>
+            MD5 Encryption
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.GasRecords">
+            <summary>
+            GAS request model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.GasRecords.GasWeight">
+            <summary>
+            Gas weight gotten from the microcontroller
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.GasRecords.GasMobileNumber">
+            <summary>
+            Gas mobile number (Which Serves as gas Identifier) (encrypted)
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.GasResponseDto">
+            <summary>
+            GAS Response Model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.GasResponseDto.GasId">
+            <summary>
+            Gas autogenerated id
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.GasResponseDto.GasMobileNumber">
+            <summary>
+            Gas mobile number (unique id for the microcontroller)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.GasResponseDto.GasWeight">
+            <summary>
+            Gas weight sent fro the contoller
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.LoginDto">
+            <summary>
+            Login request model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginDto.Email">
+            <summary>
+            Users email address (encrypted)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginDto.Password">
+            <summary>
+            Users password loggin in (encrypted)
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.LoginResponseDto">
+            <summary>
+            Loginresponse model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.CustomerId">
+            <summary>
+            Users generated customerID
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.FirstName">
+            <summary>
+            users firstname used to signup
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.LastName">
+            <summary>
+            users LastName used to signup
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.Username">
+            <summary>
+            users UserName used to signup
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.MobileNumber">
+            <summary>
+            users MobileNumber used to signup
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.EmailAddress">
+            <summary>
+            users EmailAddress used to signup
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.LoginResponseDto.Country">
+            <summary>
+            users Country used to signup
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.SignUpDto">
+            <summary>
+            signup request model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpDto.Firstname">
+            <summary>
+            customers Firstname signing up (encrypted)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpDto.LastName">
+            <summary>
+            customers firstname signing up (encrypted)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpDto.Email">
+            <summary>
+            customers LastName signing up (encrypted)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpDto.MobileNumber">
+            <summary>
+            customers MobileNumber signing up (encrypted)
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpDto.Password">
+            <summary>
+            customers Password signing up (encrypted)
+            </summary>
+        </member>
+        <member name="T:SharpGasCore.Models.SignUpResponseDto">
+            <summary>
+            signup response model
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.CustomerId">
+            <summary>
+            Auto generated customer id for succesfully signed up customer
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.FirstName">
+            <summary>
+            firstname indicated by the customer signing up
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.LastName">
+            <summary>
+            LastName indicated by the customer signing up
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.Username">
+            <summary>
+            Username indicated by the customer signing up
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.MobileNumber">
+            <summary>
+            MobileNumber indicated by the customer signing up
+            </summary>
+        </member>
+        <member name="P:SharpGasCore.Models.SignUpResponseDto.EmailAddress">
+            <summary>
+            EmailAddress indicated by the customer signing up
+            </summary>
+        </member>
+    </members>
+</doc>

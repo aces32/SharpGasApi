@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpGasCore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -11,7 +12,12 @@ namespace SharpGasCore.ValidationAttributes
         protected override ValidationResult IsValid(object value,
         ValidationContext validationContext)
         {
-            var mobileNumber = (string)value;
+            string decryptedVal = DecryptionUtil.RSADecrypt(value.ToString());
+            if (string.IsNullOrEmpty(decryptedVal))
+            {
+                return new ValidationResult(FormatErrorMessage("Make sure your Mobile Numbefr is encrypted"));
+            }
+            var mobileNumber = (string)decryptedVal;
             string MatchPhoneNumberPattern = @"\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*";
 
             if (!Regex.IsMatch(mobileNumber, MatchPhoneNumberPattern))

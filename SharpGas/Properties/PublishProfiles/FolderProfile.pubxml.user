@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>ftp://sharpgasapi.somee.com/www.SharpgasApi.somee.com</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Deploy\SharpGasApi</_PublishTargetUrl>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcwlUgY5xE02lG95rD3ZfIwAAAAACAAAAAAAQZgAAAAEAACAAAABEIiGxfb1DAlgRpQKLcdJTTZj8WuVNEgAXZ92FgKQsgwAAAAAOgAAAAAIAACAAAADapCE+jObSJh5gTrh9kr7hhXPK8RM6i7HLI1Kq6QZgkCAAAAABDWF2PEF250U7giMZt34BCnW6DBlJCAP256TQl4zcGEAAAADaYThB/82w2wYAG6lcQEss3BCl/kLWSqk/bvZnUed4JrzCwYK3MjX2sC7bG+J8IuffRopfPkbANhqdC6o2VOiX</EncryptedPassword>
   </PropertyGroup>
@@ -183,8 +183,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Microsoft.AspNetCore.Authentication.dll">
       <publishTime>07/22/2020 23:41:54</publishTime>
     </File>
+    <File Include="Microsoft.AspNetCore.Authentication.JwtBearer.dll">
+      <publishTime>09/23/2020 23:12:38</publishTime>
+    </File>
     <File Include="Microsoft.AspNetCore.Authentication.OAuth.dll">
       <publishTime>07/22/2020 23:41:54</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authentication.OpenIdConnect.dll">
+      <publishTime>08/21/2020 21:29:20</publishTime>
     </File>
     <File Include="Microsoft.AspNetCore.Authorization.dll">
       <publishTime>07/22/2020 23:41:54</publishTime>
@@ -579,11 +585,20 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Microsoft.Net.Http.Headers.dll">
       <publishTime>07/22/2020 23:42:14</publishTime>
     </File>
+    <File Include="Microsoft.TeamFoundation.Common.dll">
+      <publishTime>08/26/2019 18:09:18</publishTime>
+    </File>
     <File Include="Microsoft.VisualBasic.Core.dll">
       <publishTime>07/21/2020 21:03:36</publishTime>
     </File>
     <File Include="Microsoft.VisualBasic.dll">
       <publishTime>07/21/2020 21:03:12</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Services.Common.dll">
+      <publishTime>08/26/2019 18:09:18</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Services.WebApi.dll">
+      <publishTime>08/26/2019 18:09:00</publishTime>
     </File>
     <File Include="Microsoft.Win32.Primitives.dll">
       <publishTime>07/21/2020 21:03:36</publishTime>
@@ -615,8 +630,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="netstandard.dll">
       <publishTime>07/21/2020 21:03:34</publishTime>
     </File>
+    <File Include="Newtonsoft.Json.Bson.dll">
+      <publishTime>09/21/2019 01:29:27</publishTime>
+    </File>
     <File Include="Newtonsoft.Json.dll">
-      <publishTime>09/21/2019 01:29:26</publishTime>
+      <publishTime>09/21/2019 01:29:30</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll">
       <publishTime>05/15/2018 13:29:40</publishTime>
@@ -643,31 +661,31 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/15/2018 13:29:44</publishTime>
     </File>
     <File Include="SharpGas.deps.json">
-      <publishTime>09/07/2020 19:15:59</publishTime>
+      <publishTime>11/08/2020 15:03:26</publishTime>
     </File>
     <File Include="SharpGas.dll">
       <publishTime>09/07/2020 19:15:57</publishTime>
     </File>
     <File Include="SharpGas.exe">
-      <publishTime>09/07/2020 19:15:57</publishTime>
+      <publishTime>11/08/2020 15:03:22</publishTime>
     </File>
     <File Include="SharpGas.pdb">
-      <publishTime>09/07/2020 19:15:57</publishTime>
+      <publishTime>11/08/2020 15:03:22</publishTime>
     </File>
     <File Include="SharpGas.runtimeconfig.json">
-      <publishTime>09/07/2020 19:15:59</publishTime>
+      <publishTime>11/08/2020 15:03:24</publishTime>
     </File>
     <File Include="SharpGasCore.dll">
       <publishTime>09/07/2020 17:45:14</publishTime>
     </File>
     <File Include="SharpGasCore.pdb">
-      <publishTime>09/07/2020 17:45:14</publishTime>
+      <publishTime>11/08/2020 15:02:57</publishTime>
     </File>
     <File Include="SharpGasData.dll">
       <publishTime>09/07/2020 17:45:15</publishTime>
     </File>
     <File Include="SharpGasData.pdb">
-      <publishTime>09/07/2020 17:45:15</publishTime>
+      <publishTime>11/08/2020 15:02:58</publishTime>
     </File>
     <File Include="sni.dll">
       <publishTime>09/21/2019 01:29:31</publishTime>
@@ -734,6 +752,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="System.Data.dll">
       <publishTime>07/21/2020 21:03:40</publishTime>
+    </File>
+    <File Include="System.Data.SqlClient.dll">
+      <publishTime>11/20/2017 18:09:04</publishTime>
     </File>
     <File Include="System.Diagnostics.Contracts.dll">
       <publishTime>07/21/2020 21:03:42</publishTime>
@@ -863,6 +884,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="System.Net.Http.dll">
       <publishTime>07/21/2020 21:03:48</publishTime>
+    </File>
+    <File Include="System.Net.Http.Formatting.dll">
+      <publishTime>02/01/2018 12:17:18</publishTime>
     </File>
     <File Include="System.Net.HttpListener.dll">
       <publishTime>07/21/2020 21:03:48</publishTime>
@@ -1179,11 +1203,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="System.Xml.XPath.XDocument.dll">
       <publishTime>07/21/2020 21:03:12</publishTime>
     </File>
+    <File Include="System.Xml.XPath.XmlDocument.dll">
+      <publishTime>11/05/2016 04:57:34</publishTime>
+    </File>
     <File Include="ucrtbase.dll">
       <publishTime>04/19/2018 23:56:16</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>09/07/2020 20:17:39</publishTime>
+      <publishTime>11/08/2020 15:03:26</publishTime>
     </File>
     <File Include="WindowsBase.dll">
       <publishTime>07/21/2020 21:03:12</publishTime>

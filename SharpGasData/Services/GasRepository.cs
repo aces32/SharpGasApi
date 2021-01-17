@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using SharpGasCore.Models;
+using System.Threading.Tasks;
 
 namespace SharpGasData.Services
 {
@@ -31,9 +32,9 @@ namespace SharpGasData.Services
         {
             sharpGasContext.GasInformation.Where(x => x.GasMobileNumber == records.GasMobileNumber).FirstOrDefault().GasWeight = records.GasWeight;
         }
-        public void Commit()
+        public async Task<int> Commit()
         {
-            sharpGasContext.SaveChanges();
+            return await sharpGasContext.SaveChangesAsync();
         }
 
         public GasInformation GetGasRecord(Guid gasID)

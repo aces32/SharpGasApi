@@ -12,6 +12,9 @@ using SharpGasData.Services;
 
 namespace SharpGas.Controllers
 {
+    /// <summary>
+    /// endpoint to store gas weight at specific intervals of time
+    /// </summary>
     [Route("api/Gas")]
     [ApiController]
     public class GasController : ControllerBase
@@ -19,6 +22,11 @@ namespace SharpGas.Controllers
         private readonly IGasRepository gasRepository;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// GasController
+        /// </summary>
+        /// <param name="gasRepository"></param>
+        /// <param name="mapper"></param>
         public GasController(IGasRepository gasRepository,
             IMapper mapper)
         {
@@ -26,27 +34,35 @@ namespace SharpGas.Controllers
             this.mapper = mapper;
         }
 
-        // POST api/<GasController>
+        /// <summary>
+        /// endpoint to store gas weight at specific intervals of time
+        /// </summary>
+        /// <param name="records"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult<GasResponseDto> Post(GasRecords records)
+        public async Task<ActionResult<GasResponseDto>> Post(GasRecords records)
         {
             var param = mapper.Map<GasInformation>(records);
             if (gasRepository.GasAlreadyTagged(records.GasMobileNumber))
             {
                 gasRepository.UpdateGasWeight(records);
-                gasRepository.Commit();
+                await gasRepository.Commit();
             }
             else
             {
                 gasRepository.InsertGasRecord(param);
-                gasRepository.Commit();
+                await gasRepository.Commit();
             }
 
             var gasToReturn = mapper.Map<GasResponseDto>(param);
             return CreatedAtRoute("GetGasRecord", new { gasToReturn.GasId }, gasToReturn);
 
         }
-
+        /// <summary>
+        /// Get gas weight record based on specified id
+        /// </summary>
+        /// <param name="gasId"></param>
+        /// <returns></returns>
         [HttpGet("{gasId}", Name = "GetGasRecord")]
         public IActionResult GetGasRecord(Guid gasId)
         {

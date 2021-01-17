@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace SharpGas.Encryption
 {
+    /// <summary>
+    /// Used for authenticate usesers before generating token
+    /// </summary>
     public class UserService
     {
         private readonly IEnumerable<UserCredentials> users;
 
+        /// <summary>
+        /// UserCredentials credentials
+        /// </summary>
         public UserService()
         {
             users = new List<UserCredentials>
@@ -22,6 +28,10 @@ namespace SharpGas.Encryption
             };
         }
 
+        /// <summary>
+        /// Validate users credentials
+        /// </summary>
+        /// <param name="userCredentials"></param>
         public void ValidateCredentials(UserCredentials userCredentials)
         {
             bool isValid =

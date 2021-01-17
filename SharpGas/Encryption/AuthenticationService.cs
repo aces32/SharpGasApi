@@ -17,12 +17,12 @@ namespace SharpGas.Encryption
             this.tokenService = tokenService;
         }
 
-        public string Authenticate(UserCredentials userCredentials)
+        public (string, DateTime?) Authenticate(int expiryPeriod)
         {
-            userService.ValidateCredentials(userCredentials);
-            string securityToken = tokenService.GetToken();
+            //userService.ValidateCredentials(userCredentials);
+            var (securityToken, expiryTime)= tokenService.GetToken(expiryPeriod);
 
-            return securityToken;
+            return (securityToken, expiryTime);
         }
     }
 }

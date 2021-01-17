@@ -103,6 +103,31 @@ namespace SharpGasData.Migrations
                     b.ToTable("GasInformation");
                 });
 
+            modelBuilder.Entity("SharpGasData.Entities.AuthCredentials", b =>
+                {
+                    b.Property<int>("AuthID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("AuthID")
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Roles")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("expiryLength")
+                        .HasColumnType("int");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AuthID");
+
+                    b.ToTable("AuthCredentials");
+                });
+
             modelBuilder.Entity("SharpGasData.Entities.EncryptionKeys", b =>
                 {
                     b.Property<int>("KeyId")
@@ -125,6 +150,55 @@ namespace SharpGasData.Migrations
                     b.HasKey("KeyId");
 
                     b.ToTable("EncryptionKeys");
+                });
+
+            modelBuilder.Entity("SharpGasData.Entities.Vendors", b =>
+                {
+                    b.Property<int>("VendorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("VendorID")
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("VendorAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VendorCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VendorEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VendorLGA")
+                        .HasColumnName("VendorLGA")
+                        .HasColumnType("varchar(150)")
+                        .HasMaxLength(150)
+                        .IsUnicode(false);
+
+                    b.Property<string>("VendorMobileNo")
+                        .HasColumnName("VendorMobileNo")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<string>("VendorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("VendorPassword")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("VendorState")
+                        .HasColumnName("VendorState")
+                        .HasColumnType("varchar(150)")
+                        .HasMaxLength(150)
+                        .IsUnicode(false);
+
+                    b.Property<string>("VendorType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VendorID");
+
+                    b.ToTable("Vendors");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,6 +3,7 @@ using SharpGasData.Entites;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SharpGasData.Services
 {
@@ -14,6 +15,6 @@ namespace SharpGasData.Services
 
         void InsertGasRecord(GasInformation gas);
         GasInformation GetGasRecord(Guid gasID);
-        void Commit();
+        Task<int> Commit();
     }
 }

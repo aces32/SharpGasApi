@@ -67,8 +67,6 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.csprojAssemblyReference.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.AssemblyInfoInputs.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.AssemblyInfo.cs
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.csproj.CoreCompileInputs.cache
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.RazorTargetAssemblyInfo.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.csproj.CopyComplete
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\staticwebassets\SharpGas.StaticWebAssets.Manifest.cache
@@ -76,3 +74,12 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.genruntimeconfig.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.csproj.CoreCompileInputs.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\SharpGas.xml
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Dapper.dll

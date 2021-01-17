@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpGas</name>
+    </assembly>
+    <members>
+        <member name="T:SharpGas.Controllers.AuthenticationController">
+            <summary>
+             authenticate users before generating token for specified api calls
+            </summary>
+        </member>
+        <member name="M:SharpGas.Controllers.AuthenticationController.#ctor(SharpGas.Encryption.AuthenticationService,SharpGasData.Services.IAuthenticationRepository)">
+            <summary>
+            AuthenticationController
+            </summary>
+            <param name="authenticationService"></param>
+            <param name="authenticationRepository"></param>
+        </member>
+        <member name="M:SharpGas.Controllers.AuthenticationController.Authenticate(SharpGas.Encryption.UserCredentials)">
+            <summary>
+            endpoint toauthenticate users before generating token for specified api calls
+            </summary>
+            <param name="userCredentials"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpGas.Controllers.GasController">
+            <summary>
+            endpoint to store gas weight at specific intervals of time
+            </summary>
+        </member>
+        <member name="M:SharpGas.Controllers.GasController.#ctor(SharpGasData.Services.IGasRepository,AutoMapper.IMapper)">
+            <summary>
+            GasController
+            </summary>
+            <param name="gasRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SharpGas.Controllers.GasController.Post(SharpGasCore.Models.GasRecords)">
+            <summary>
+            endpoint to store gas weight at specific intervals of time
+            </summary>
+            <param name="records"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGas.Controllers.GasController.GetGasRecord(System.Guid)">
+            <summary>
+            Get gas weight record based on specified id
+            </summary>
+            <param name="gasId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpGas.Controllers.OnboardingController">
+            <summary>
+            Onboard shapgas customers
+            </summary>
+        </member>
+        <member name="M:SharpGas.Controllers.OnboardingController.#ctor(SharpGasData.Services.IOnboardingRepository,AutoMapper.IMapper)">
+            <summary>
+            OnboardingController
+            </summary>
+            <param name="onboarding"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SharpGas.Controllers.OnboardingController.SharpGasLogin(SharpGasCore.Models.LoginDto)">
+            <summary>
+            Endpoint used to authenticate SharpGas Customers loggin in
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGas.Controllers.OnboardingController.SharpGasSignUp(SharpGasCore.Models.SignUpDto)">
+            <summary>
+            Endpoint to signup new sharpgas customers
+            </summary>
+            <param name="signUp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGas.Controllers.OnboardingController.GetCustomer(System.Guid)">
+            <summary>
+            Endpoint to get already or newly created customers based on customerid
+            </summary>
+            <param name="customerId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpGas.Encryption.UserService">
+            <summary>
+            Used for authenticate usesers before generating token
+            </summary>
+        </member>
+        <member name="M:SharpGas.Encryption.UserService.#ctor">
+            <summary>
+            UserCredentials credentials
+            </summary>
+        </member>
+        <member name="M:SharpGas.Encryption.UserService.ValidateCredentials(SharpGas.Encryption.UserCredentials)">
+            <summary>
+            Validate users credentials
+            </summary>
+            <param name="userCredentials"></param>
+        </member>
+    </members>
+</doc>

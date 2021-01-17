@@ -20,6 +20,8 @@ namespace SharpGasData.Models
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<GasInformation> GasInformation { get; set; }
         public virtual DbSet<EncryptionKeys> EncryptionKeys { get; set; }
+        public virtual DbSet<AuthCredentials> AuthCredentials { get; set; }
+        public virtual DbSet<Vendors> Vendors { get; set; }
 
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //        {
@@ -86,6 +88,31 @@ namespace SharpGasData.Models
                 entity.Property(e => e.GasMobileNumber)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<AuthCredentials>(entity =>
+            {
+                entity.HasKey(e => e.AuthID);
+
+                entity.Property(e => e.AuthID).HasColumnName("AuthID");
+
+            });
+
+            modelBuilder.Entity<Vendors>(entity =>
+            {
+                entity.HasKey(e => e.VendorID);
+
+                entity.Property(e => e.VendorID).HasColumnName("VendorID");
+                entity.Property(e => e.VendorMobileNo).HasColumnName("VendorMobileNo")
+                .HasMaxLength(50)
+                .IsUnicode(false);
+                entity.Property(e => e.VendorState).HasColumnName("VendorState")
+                .HasMaxLength(150)
+                .IsUnicode(false);
+                entity.Property(e => e.VendorLGA).HasColumnName("VendorLGA")
+                .HasMaxLength(150)
+                .IsUnicode(false);
+
             });
 
             OnModelCreatingPartial(modelBuilder);

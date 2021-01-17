@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[10.0.0, )"
             },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
