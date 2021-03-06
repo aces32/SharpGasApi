@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using SharpGasCore.Models;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SharpGasData.Services
 {
@@ -37,9 +38,9 @@ namespace SharpGasData.Services
             return await sharpGasContext.SaveChangesAsync();
         }
 
-        public GasInformation GetGasRecord(Guid gasID)
+        public async Task<List<GasInformation>> GetGasRecord(int gasID)
         {
-            return sharpGasContext.GasInformation.Where(x => x.GasId == Convert.ToInt32(gasID)).FirstOrDefault();
+            return await sharpGasContext.GasInformation.Where(x => x.GasId == gasID).ToListAsync();
         }
 
         public void Dispose()

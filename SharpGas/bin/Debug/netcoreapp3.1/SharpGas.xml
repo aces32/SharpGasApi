@@ -42,7 +42,7 @@
             <param name="records"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpGas.Controllers.GasController.GetGasRecord(System.Guid)">
+        <member name="M:SharpGas.Controllers.GasController.GetGasRecord(System.Int32)">
             <summary>
             Get gas weight record based on specified id
             </summary>

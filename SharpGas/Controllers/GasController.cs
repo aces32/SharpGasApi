@@ -64,16 +64,20 @@ namespace SharpGas.Controllers
         /// <param name="gasId"></param>
         /// <returns></returns>
         [HttpGet("{gasId}", Name = "GetGasRecord")]
-        public IActionResult GetGasRecord(Guid gasId)
+        public async Task<ActionResult<GasResponseDto>> GetGasRecord(int gasId)
         {
-            var gasFromRepo = gasRepository.GetGasRecord(gasId);
+            var gasFromRepo = await gasRepository.GetGasRecord(gasId);
 
             if (gasFromRepo == null)
             {
                 return NotFound();
             }
+            else if (gasFromRepo.Count == 0)
+            {
+                return NotFound();
+            }
 
-            return Ok(mapper.Map<GasResponseDto>(gasFromRepo));
+            return Ok(mapper.Map<GasResponseDto>(gasFromRepo.FirstOrDefault()));
         }
 
     }

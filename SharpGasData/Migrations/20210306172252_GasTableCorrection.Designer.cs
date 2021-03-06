@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210306172252_GasTableCorrection")]
+    partial class GasTableCorrection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

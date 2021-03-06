@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210306165826_CorrectGasData")]
+    partial class CorrectGasData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +92,7 @@ namespace SharpGasData.Migrations
                     b.Property<int?>("Availability")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomersCustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("GasImage")
@@ -111,8 +113,6 @@ namespace SharpGasData.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("GasId");
-
-                    b.HasIndex("CustomersCustomerId");
 
                     b.HasIndex("VendorsVendorID");
 
@@ -219,10 +219,6 @@ namespace SharpGasData.Migrations
 
             modelBuilder.Entity("SharpGasData.Entites.GasInformation", b =>
                 {
-                    b.HasOne("SharpGasData.Entites.Customers", null)
-                        .WithMany("GasID")
-                        .HasForeignKey("CustomersCustomerId");
-
                     b.HasOne("SharpGasData.Entities.Vendors", null)
                         .WithMany("GasID")
                         .HasForeignKey("VendorsVendorID");

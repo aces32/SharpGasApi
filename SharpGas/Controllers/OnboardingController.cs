@@ -27,6 +27,9 @@ namespace SharpGas.Controllers
         private readonly IOnboardingRepository onboarding;
         private readonly IMapper mapper;
 
+        string a = 2.ToString();
+
+
         /// <summary>
         /// OnboardingController
         /// </summary>
@@ -96,7 +99,7 @@ namespace SharpGas.Controllers
             return CreatedAtRoute("GetCustomer", new { customerToReturn.CustomerId },
                     new DefaultResponse<SignUpResponseDto>
                     {
-                        Message = "Signup successfull",
+                        Message = "Sign up successful",
                         Data = customerToReturn
 
                      });

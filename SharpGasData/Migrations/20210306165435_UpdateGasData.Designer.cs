@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210306165435_UpdateGasData")]
+    partial class UpdateGasData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +92,7 @@ namespace SharpGasData.Migrations
                     b.Property<int?>("Availability")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomersCustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("GasImage")
@@ -107,14 +109,7 @@ namespace SharpGasData.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("VendorsVendorID")
-                        .HasColumnType("int");
-
                     b.HasKey("GasId");
-
-                    b.HasIndex("CustomersCustomerId");
-
-                    b.HasIndex("VendorsVendorID");
 
                     b.ToTable("GasInformation");
                 });
@@ -176,6 +171,9 @@ namespace SharpGasData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("GasInformationGasId")
+                        .HasColumnType("int");
+
                     b.Property<string>("VendorAddress")
                         .HasColumnType("nvarchar(max)");
 
@@ -214,18 +212,16 @@ namespace SharpGasData.Migrations
 
                     b.HasKey("VendorID");
 
+                    b.HasIndex("GasInformationGasId");
+
                     b.ToTable("Vendors");
                 });
 
-            modelBuilder.Entity("SharpGasData.Entites.GasInformation", b =>
+            modelBuilder.Entity("SharpGasData.Entities.Vendors", b =>
                 {
-                    b.HasOne("SharpGasData.Entites.Customers", null)
-                        .WithMany("GasID")
-                        .HasForeignKey("CustomersCustomerId");
-
-                    b.HasOne("SharpGasData.Entities.Vendors", null)
-                        .WithMany("GasID")
-                        .HasForeignKey("VendorsVendorID");
+                    b.HasOne("SharpGasData.Entites.GasInformation", null)
+                        .WithMany("VendorID")
+                        .HasForeignKey("GasInformationGasId");
                 });
 #pragma warning restore 612, 618
         }

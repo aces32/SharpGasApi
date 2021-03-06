@@ -14,7 +14,7 @@ namespace SharpGasData.Services
         void UpdateGasWeight(GasRecords weight);
 
         void InsertGasRecord(GasInformation gas);
-        GasInformation GetGasRecord(Guid gasID);
+        Task<List<GasInformation>> GetGasRecord(int gasID);
         Task<int> Commit();
     }
 }
