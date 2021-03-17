@@ -45,6 +45,8 @@ namespace SharpGas.Controllers
         {
             try
             {
+               
+
                 var validateAPIUsr = await authenticationRepository.AuthenticateAsync(userCredentials);
                 if (validateAPIUsr == null)
                 {
