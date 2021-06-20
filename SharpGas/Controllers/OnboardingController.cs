@@ -21,12 +21,12 @@ namespace SharpGas.Controllers
     /// Onboard shapgas customers
     /// </summary>
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OnboardingController : ControllerBase
     {
         private readonly IOnboardingRepository onboarding;
         private readonly IMapper mapper;
-
+        private readonly ILogger<OnboardingController> logger;
         string a = 2.ToString();
 
 
@@ -36,10 +36,11 @@ namespace SharpGas.Controllers
         /// <param name="onboarding"></param>
         /// <param name="mapper"></param>
         public OnboardingController(IOnboardingRepository onboarding,
-            IMapper mapper)
+            IMapper mapper, ILogger<OnboardingController> logger)
         {
             this.onboarding = onboarding;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -69,9 +70,9 @@ namespace SharpGas.Controllers
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                logger.LogError(ex, $"Exception occurred at OnboardingController {nameof(SharpGasLogin)} method");
                 return StatusCode(500, new DefaultResponse<IEnumerable<LoginResponseDto>>
                 {
                     Message = "System Error, Please try again later"
@@ -88,21 +89,33 @@ namespace SharpGas.Controllers
         [HttpPost, Route("api/Onboarding/SignUp")]
         public async Task<ActionResult<DefaultResponse<SignUpResponseDto>>> SharpGasSignUp(SignUpDto signUp)
         {
-            if (await onboarding.CustomerExistAsync(signUp.Email.Trim()))
+            try
             {
-                return StatusCode(409, new DefaultResponse<SignUpResponseDto> { Message = "Email Already Exist" });
+                if (await onboarding.CustomerExistAsync(signUp.Email.Trim()))
+                {
+                    return StatusCode(409, new DefaultResponse<SignUpResponseDto> { Message = "Email Already Exist" });
+                }
+
+                var param = mapper.Map<Customers>(signUp);
+                await onboarding.SignUp(param);
+                var customerToReturn = mapper.Map<SignUpResponseDto>(param);
+                return CreatedAtRoute("GetCustomer", new { customerToReturn.CustomerId },
+                        new DefaultResponse<SignUpResponseDto>
+                        {
+                            Message = "Sign up successful",
+                            Data = customerToReturn
+
+                        });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Exception occurred at OnboardingController {nameof(SharpGasSignUp)} method");
+                return StatusCode(500, new DefaultResponse<SignUpResponseDto>
+                {
+                    Message = "System Error, Please try again later"
+                });
             }
 
-            var param = mapper.Map<Customers>(signUp);
-            await onboarding.SignUp(param);
-            var customerToReturn = mapper.Map<SignUpResponseDto>(param);
-            return CreatedAtRoute("GetCustomer", new { customerToReturn.CustomerId },
-                    new DefaultResponse<SignUpResponseDto>
-                    {
-                        Message = "Sign up successful",
-                        Data = customerToReturn
-
-                     });
 
         }
 
@@ -111,24 +124,36 @@ namespace SharpGas.Controllers
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
-        [HttpGet("{CustomerId}", Name = "GetCustomer")]
+        [HttpGet("api/Onboarding/{CustomerId}", Name = "GetCustomer")]
         public async Task<ActionResult<DefaultResponse<SignUpResponseDto>>> GetCustomer(Guid customerId)
         {
-            var customerFromRepo = await onboarding.GetCustomerAsync(customerId);
-
-            if (customerFromRepo.FirstOrDefault() == null)
+            try
             {
-                return StatusCode(400, new DefaultResponse<SignUpResponseDto>
+                var customerFromRepo = await onboarding.GetCustomerAsync(customerId);
+
+                if (customerFromRepo.FirstOrDefault() == null)
                 {
-                    Message = "Record not found",
+                    return StatusCode(400, new DefaultResponse<SignUpResponseDto>
+                    {
+                        Message = "Record not found",
+                    });
+                }
+
+                return Ok(new DefaultResponse<SignUpResponseDto>
+                {
+                    Message = "Sign Up successful",
+                    Data = mapper.Map<SignUpResponseDto>(customerFromRepo.FirstOrDefault())
+                });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Exception occurred at OnboardingController {nameof(GetCustomer)} method");
+                return StatusCode(500, new DefaultResponse<SignUpResponseDto>
+                {
+                    Message = "System Error, Please try again later"
                 });
             }
 
-            return Ok(new DefaultResponse<SignUpResponseDto>
-            {
-                Message = "Sign Up successful",
-                Data = mapper.Map<SignUpResponseDto>(customerFromRepo.FirstOrDefault())
-            });
         }
 
     }

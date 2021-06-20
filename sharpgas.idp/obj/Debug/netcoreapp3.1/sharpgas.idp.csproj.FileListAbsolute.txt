@@ -1,4 +1,4 @@
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\sharpgas.idp.exe
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\sharpgas.idp.deps.json
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\sharpgas.idp.runtimeconfig.json
@@ -29,13 +29,15 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcore
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.csprojAssemblyReference.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.AssemblyInfoInputs.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.AssemblyInfo.cs
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.csproj.CoreCompileInputs.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.RazorAssemblyInfo.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.RazorAssemblyInfo.cs
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\staticwebassets\sharpgas.idp.StaticWebAssets.Manifest.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\staticwebassets\sharpgas.idp.StaticWebAssets.xml
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\scopedcss\bundle\sharpgas.idp.styles.css
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.TagHelpers.input.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.TagHelpers.output.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.RazorCoreGenerate.cache
@@ -62,9 +64,7 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcore
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.RazorTargetAssemblyInfo.cs
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.Views.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.csproj.CopyComplete
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\staticwebassets\sharpgas.idp.StaticWebAssets.Manifest.cache
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\staticwebassets\sharpgas.idp.StaticWebAssets.xml
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.genruntimeconfig.cache
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\sharpgas.idp\obj\Debug\netcoreapp3.1\sharpgas.idp.csproj.AssemblyReference.cache

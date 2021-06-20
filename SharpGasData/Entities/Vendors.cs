@@ -19,7 +19,7 @@ namespace SharpGasData.Entities
         public string VendorMobileNo { get; set; }
         public byte[] VendorPassword { get; set; }
         public string VendorType { get; set; }
+        public List<GasInformation> GasInformation { get; set; }
 
-        public List<GasInformation> GasID { get; set; }
     }
 }

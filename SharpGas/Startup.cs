@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Logging;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -169,6 +170,7 @@ namespace SharpGas
 
             app.UseHttpsRedirection();
             app.UseSwagger();
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseSwaggerUI(setupAction =>
             {

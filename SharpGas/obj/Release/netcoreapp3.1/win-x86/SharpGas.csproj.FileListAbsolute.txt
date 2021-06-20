@@ -1,6 +1,5 @@
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\appsettings.Development.json
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\appsettings.json
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\Properties\launchSettings.json
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\SharpGas.exe
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\SharpGas.deps.json
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\SharpGas.runtimeconfig.json
@@ -73,3 +72,14 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreap
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Release\netcoreapp3.1\win-x86\SharpGas.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\Dapper.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\DirectoryFileReader.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\Microsoft.Win32.Registry.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\Microsoft.Win32.SystemEvents.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Data.OleDb.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Drawing.Common.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Security.AccessControl.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Security.Permissions.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Security.Principal.Windows.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Release\netcoreapp3.1\win-x86\System.Windows.Extensions.dll
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Release\netcoreapp3.1\win-x86\scopedcss\bundle\SharpGas.styles.css

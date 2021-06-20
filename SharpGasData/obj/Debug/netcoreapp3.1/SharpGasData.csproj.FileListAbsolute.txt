@@ -5,7 +5,7 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Debug\netcore
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Debug\netcoreapp3.1\SharpGasData.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Debug\netcoreapp3.1\SharpGasCore.dll
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\bin\Debug\netcoreapp3.1\SharpGasCore.pdb
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Debug\netcoreapp3.1\SharpGasData.csprojAssemblyReference.cache
+C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Debug\netcoreapp3.1\SharpGasData.csproj.AssemblyReference.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Debug\netcoreapp3.1\SharpGasData.AssemblyInfoInputs.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Debug\netcoreapp3.1\SharpGasData.AssemblyInfo.cs
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGasData\obj\Debug\netcoreapp3.1\SharpGasData.csproj.CoreCompileInputs.cache

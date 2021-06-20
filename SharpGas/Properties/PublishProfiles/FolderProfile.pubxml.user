@@ -7,6 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <_PublishTargetUrl>C:\Deploy\SharpGasApi</_PublishTargetUrl>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcwlUgY5xE02lG95rD3ZfIwAAAAACAAAAAAAQZgAAAAEAACAAAABEIiGxfb1DAlgRpQKLcdJTTZj8WuVNEgAXZ92FgKQsgwAAAAAOgAAAAAIAACAAAADapCE+jObSJh5gTrh9kr7hhXPK8RM6i7HLI1Kq6QZgkCAAAAABDWF2PEF250U7giMZt34BCnW6DBlJCAP256TQl4zcGEAAAADaYThB/82w2wYAG6lcQEss3BCl/kLWSqk/bvZnUed4JrzCwYK3MjX2sC7bG+J8IuffRopfPkbANhqdC6o2VOiX</EncryptedPassword>
+    <History>True|2021-05-25T17:11:03.3307217Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="api-ms-win-core-console-l1-1-0.dll">

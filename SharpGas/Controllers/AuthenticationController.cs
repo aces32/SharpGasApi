@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.Services.WebApi.Jwt;
 using SharpGas.Encryption;
 using SharpGasCore.Models;
@@ -21,6 +22,7 @@ namespace SharpGas.Controllers
     {
         private readonly AuthenticationService authenticationService;
         private readonly IAuthenticationRepository authenticationRepository;
+        private readonly ILogger<AuthenticationController> logger;
 
         /// <summary>
         /// AuthenticationController
@@ -28,10 +30,11 @@ namespace SharpGas.Controllers
         /// <param name="authenticationService"></param>
         /// <param name="authenticationRepository"></param>
         public AuthenticationController(AuthenticationService authenticationService,
-            IAuthenticationRepository authenticationRepository)
+            IAuthenticationRepository authenticationRepository, ILogger<AuthenticationController> logger)
         {
             this.authenticationService = authenticationService;
             this.authenticationRepository = authenticationRepository;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -45,8 +48,6 @@ namespace SharpGas.Controllers
         {
             try
             {
-               
-
                 var validateAPIUsr = await authenticationRepository.AuthenticateAsync(userCredentials);
                 if (validateAPIUsr == null)
                 {
@@ -77,8 +78,9 @@ namespace SharpGas.Controllers
                 }
 
             }
-            catch (InvalidCredentialsException)
+            catch (InvalidCredentialsException ex)
             {
+                logger.LogError(ex, $"Exception occurred at AuthController {nameof(Authenticate)} method");
                 return Unauthorized();
             }
         }

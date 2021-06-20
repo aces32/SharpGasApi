@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharpGasData\SharpGasData.csproj" />
+    <ProjectReference Include="D:\Coding\Work\DistributionChannel\Application.Logging\Application.Logging.csproj" />
   </ItemGroup>
 
 

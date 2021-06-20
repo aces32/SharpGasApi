@@ -90,6 +90,9 @@ namespace SharpGasData.Migrations
                     b.Property<int?>("Availability")
                         .HasColumnType("int");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CustomersCustomerId")
                         .HasColumnType("int");
 
@@ -106,6 +109,9 @@ namespace SharpGasData.Migrations
 
                     b.Property<double?>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("VendorID")
+                        .HasColumnType("int");
 
                     b.Property<int?>("VendorsVendorID")
                         .HasColumnType("int");
@@ -219,12 +225,12 @@ namespace SharpGasData.Migrations
 
             modelBuilder.Entity("SharpGasData.Entites.GasInformation", b =>
                 {
-                    b.HasOne("SharpGasData.Entites.Customers", null)
-                        .WithMany("GasID")
+                    b.HasOne("SharpGasData.Entites.Customers", "Customers")
+                        .WithMany("GasInformation")
                         .HasForeignKey("CustomersCustomerId");
 
-                    b.HasOne("SharpGasData.Entities.Vendors", null)
-                        .WithMany("GasID")
+                    b.HasOne("SharpGasData.Entities.Vendors", "Vendors")
+                        .WithMany("GasInformation")
                         .HasForeignKey("VendorsVendorID");
                 });
 #pragma warning restore 612, 618

@@ -9,7 +9,7 @@
              authenticate users before generating token for specified api calls
             </summary>
         </member>
-        <member name="M:SharpGas.Controllers.AuthenticationController.#ctor(SharpGas.Encryption.AuthenticationService,SharpGasData.Services.IAuthenticationRepository)">
+        <member name="M:SharpGas.Controllers.AuthenticationController.#ctor(SharpGas.Encryption.AuthenticationService,SharpGasData.Services.IAuthenticationRepository,Microsoft.Extensions.Logging.ILogger{SharpGas.Controllers.AuthenticationController})">
             <summary>
             AuthenticationController
             </summary>
@@ -54,7 +54,7 @@
             Onboard shapgas customers
             </summary>
         </member>
-        <member name="M:SharpGas.Controllers.OnboardingController.#ctor(SharpGasData.Services.IOnboardingRepository,AutoMapper.IMapper)">
+        <member name="M:SharpGas.Controllers.OnboardingController.#ctor(SharpGasData.Services.IOnboardingRepository,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{SharpGas.Controllers.OnboardingController})">
             <summary>
             OnboardingController
             </summary>

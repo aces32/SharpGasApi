@@ -16,6 +16,6 @@ namespace SharpGasData.Entites
         public string Address2 { get; set; }
         public string Password { get; set; }
 
-        public List<GasInformation> GasID { get; set; }
+        public List<GasInformation> GasInformation { get; set; }
     }
 }
