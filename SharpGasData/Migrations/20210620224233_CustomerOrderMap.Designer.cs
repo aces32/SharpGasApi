@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210620224233_CustomerOrderMap")]
+    partial class CustomerOrderMap
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,8 +66,8 @@ namespace SharpGasData.Migrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.Property<byte[]>("Password")
-                        .HasColumnType("varbinary(150)")
+                    b.Property<string>("Password")
+                        .HasColumnType("varchar(150)")
                         .HasMaxLength(150)
                         .IsUnicode(false);
 
@@ -90,6 +92,9 @@ namespace SharpGasData.Migrations
                     b.Property<int?>("Availability")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CustomersCustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GasImage")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,7 +109,14 @@ namespace SharpGasData.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int?>("VendorsVendorID")
+                        .HasColumnType("int");
+
                     b.HasKey("GasId");
+
+                    b.HasIndex("CustomersCustomerId");
+
+                    b.HasIndex("VendorsVendorID");
 
                     b.ToTable("GasInformation");
                 });
@@ -147,11 +159,16 @@ namespace SharpGasData.Migrations
                     b.Property<int>("GasId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("VendorsVendorID")
+                        .HasColumnType("int");
+
                     b.HasKey("CustomerOrdersID");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("GasId");
+
+                    b.HasIndex("VendorsVendorID");
 
                     b.ToTable("CustomerOrders");
                 });
@@ -251,6 +268,17 @@ namespace SharpGasData.Migrations
                     b.ToTable("Vendors");
                 });
 
+            modelBuilder.Entity("SharpGasData.Entites.GasInformation", b =>
+                {
+                    b.HasOne("SharpGasData.Entites.Customers", null)
+                        .WithMany("GasInformation")
+                        .HasForeignKey("CustomersCustomerId");
+
+                    b.HasOne("SharpGasData.Entities.Vendors", null)
+                        .WithMany("GasInformation")
+                        .HasForeignKey("VendorsVendorID");
+                });
+
             modelBuilder.Entity("SharpGasData.Entities.CustomerOrders", b =>
                 {
                     b.HasOne("SharpGasData.Entites.Customers", "Customers")
@@ -264,6 +292,10 @@ namespace SharpGasData.Migrations
                         .HasForeignKey("GasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("SharpGasData.Entities.Vendors", null)
+                        .WithMany("CustomerOrders")
+                        .HasForeignKey("VendorsVendorID");
                 });
 
             modelBuilder.Entity("SharpGasData.Entities.VendorGasMap", b =>
@@ -275,7 +307,7 @@ namespace SharpGasData.Migrations
                         .IsRequired();
 
                     b.HasOne("SharpGasData.Entities.Vendors", "Vendors")
-                        .WithMany("VendorGasMap")
+                        .WithMany()
                         .HasForeignKey("VendorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

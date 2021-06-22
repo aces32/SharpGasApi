@@ -75,7 +75,7 @@
             <param name="signUp"></param>
             <returns></returns>
         </member>
-        <member name="M:SharpGas.Controllers.OnboardingController.GetCustomer(System.Guid)">
+        <member name="M:SharpGas.Controllers.OnboardingController.GetCustomer(System.Int32)">
             <summary>
             Endpoint to get already or newly created customers based on customerid
             </summary>

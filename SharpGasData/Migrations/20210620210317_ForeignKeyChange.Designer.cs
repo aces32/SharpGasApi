@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210620210317_ForeignKeyChange")]
+    partial class ForeignKeyChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,8 +66,8 @@ namespace SharpGasData.Migrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.Property<byte[]>("Password")
-                        .HasColumnType("varbinary(150)")
+                    b.Property<string>("Password")
+                        .HasColumnType("varchar(150)")
                         .HasMaxLength(150)
                         .IsUnicode(false);
 
@@ -90,6 +92,9 @@ namespace SharpGasData.Migrations
                     b.Property<int?>("Availability")
                         .HasColumnType("int");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GasImage")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,7 +109,14 @@ namespace SharpGasData.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("VendorID")
+                        .HasColumnType("int");
+
                     b.HasKey("GasId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("VendorID");
 
                     b.ToTable("GasInformation");
                 });
@@ -134,28 +146,6 @@ namespace SharpGasData.Migrations
                     b.ToTable("AuthCredentials");
                 });
 
-            modelBuilder.Entity("SharpGasData.Entities.CustomerOrders", b =>
-                {
-                    b.Property<int>("CustomerOrdersID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GasId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomerOrdersID");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("GasId");
-
-                    b.ToTable("CustomerOrders");
-                });
-
             modelBuilder.Entity("SharpGasData.Entities.EncryptionKeys", b =>
                 {
                     b.Property<int>("KeyId")
@@ -178,28 +168,6 @@ namespace SharpGasData.Migrations
                     b.HasKey("KeyId");
 
                     b.ToTable("EncryptionKeys");
-                });
-
-            modelBuilder.Entity("SharpGasData.Entities.VendorGasMap", b =>
-                {
-                    b.Property<int>("VendorGasMapID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GasId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VendorID")
-                        .HasColumnType("int");
-
-                    b.HasKey("VendorGasMapID");
-
-                    b.HasIndex("GasId");
-
-                    b.HasIndex("VendorID");
-
-                    b.ToTable("VendorGasMap");
                 });
 
             modelBuilder.Entity("SharpGasData.Entities.Vendors", b =>
@@ -251,31 +219,16 @@ namespace SharpGasData.Migrations
                     b.ToTable("Vendors");
                 });
 
-            modelBuilder.Entity("SharpGasData.Entities.CustomerOrders", b =>
+            modelBuilder.Entity("SharpGasData.Entites.GasInformation", b =>
                 {
                     b.HasOne("SharpGasData.Entites.Customers", "Customers")
-                        .WithMany("CustomerOrders")
+                        .WithMany("GasInformation")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SharpGasData.Entites.GasInformation", "GasInformation")
-                        .WithMany("CustomerOrders")
-                        .HasForeignKey("GasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SharpGasData.Entities.VendorGasMap", b =>
-                {
-                    b.HasOne("SharpGasData.Entites.GasInformation", "GasInformation")
-                        .WithMany("VendorGasMap")
-                        .HasForeignKey("GasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SharpGasData.Entities.Vendors", "Vendors")
-                        .WithMany("VendorGasMap")
+                        .WithMany("GasInformation")
                         .HasForeignKey("VendorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

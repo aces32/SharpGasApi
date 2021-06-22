@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpGasData.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SharpGasData.Entites
@@ -14,8 +15,8 @@ namespace SharpGasData.Entites
         public string Country { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
+        public ICollection<CustomerOrders> CustomerOrders { get; set; }
 
-        public List<GasInformation> GasInformation { get; set; }
     }
 }

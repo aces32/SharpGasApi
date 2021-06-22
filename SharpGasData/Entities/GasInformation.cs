@@ -15,10 +15,8 @@ namespace SharpGasData.Entites
         public int? Availability { get; set; }
         public double? Price { get; set; }
         public string GasImage { get; set; }
-        public int CustomerId { get; set; }
-        public Customers Customers { get; set; }
-        public int VendorID { get; set; }
-        public Vendors Vendors { get; set; }
+        public ICollection<CustomerOrders> CustomerOrders { get; set; }
+        public ICollection<VendorGasMap> VendorGasMap { get; set; }
 
     }
 }

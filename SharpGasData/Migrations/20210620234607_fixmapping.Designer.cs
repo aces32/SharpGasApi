@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharpGasData.Models;
 
 namespace SharpGasData.Migrations
 {
     [DbContext(typeof(SharpGasContext))]
-    partial class SharpGasContextModelSnapshot : ModelSnapshot
+    [Migration("20210620234607_fixmapping")]
+    partial class fixmapping
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,11 +149,16 @@ namespace SharpGasData.Migrations
                     b.Property<int>("GasId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("VendorsVendorID")
+                        .HasColumnType("int");
+
                     b.HasKey("CustomerOrdersID");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("GasId");
+
+                    b.HasIndex("VendorsVendorID");
 
                     b.ToTable("CustomerOrders");
                 });
@@ -264,6 +271,10 @@ namespace SharpGasData.Migrations
                         .HasForeignKey("GasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("SharpGasData.Entities.Vendors", null)
+                        .WithMany("CustomerOrders")
+                        .HasForeignKey("VendorsVendorID");
                 });
 
             modelBuilder.Entity("SharpGasData.Entities.VendorGasMap", b =>
@@ -275,7 +286,7 @@ namespace SharpGasData.Migrations
                         .IsRequired();
 
                     b.HasOne("SharpGasData.Entities.Vendors", "Vendors")
-                        .WithMany("VendorGasMap")
+                        .WithMany()
                         .HasForeignKey("VendorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

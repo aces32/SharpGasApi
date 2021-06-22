@@ -63,7 +63,7 @@ namespace SharpGasData.Services
             }
         }
 
-        public async Task<int?> SignUp(Customers signUp)
+        public async Task<int?> SignUp(SignUpDto signUp)
         {
             //sharpGasContext.Customers.Add(signUp);
             try
@@ -71,9 +71,9 @@ namespace SharpGasData.Services
                 var dbConnection = new SqlConnection(sharpGasConn.SharpGasConnectionString);
 
                 Dictionary<string, string> paras = new Dictionary<string, string>();
-                paras.Add("@email", signUp.EmailAddress.Trim());
+                paras.Add("@email", signUp.Email.Trim());
                 paras.Add("@password", signUp.Password.Trim());
-                paras.Add("@firstname", signUp.FirstName.Trim());
+                paras.Add("@firstname", signUp.Firstname.Trim());
                 paras.Add("@lastname", signUp.LastName.Trim());
                 paras.Add("@mobileno", signUp.MobileNumber.Trim());
 
@@ -88,9 +88,9 @@ namespace SharpGasData.Services
             }
         }
 
-        public async Task<IEnumerable<Customers>> GetCustomerAsync(Guid customerID)
+        public async Task<IEnumerable<Customers>> GetCustomerAsync(int customerID)
         {
-            return await sharpGasContext.Customers.Where(x => x.CustomerId == Convert.ToInt32(customerID)).ToListAsync();
+            return await sharpGasContext.Customers.Where(x => x.CustomerId == customerID).ToListAsync();
         }
 
         protected virtual void Dispose(bool disposing)

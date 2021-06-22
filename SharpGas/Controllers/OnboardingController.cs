@@ -96,9 +96,8 @@ namespace SharpGas.Controllers
                     return StatusCode(409, new DefaultResponse<SignUpResponseDto> { Message = "Email Already Exist" });
                 }
 
-                var param = mapper.Map<Customers>(signUp);
-                await onboarding.SignUp(param);
-                var customerToReturn = mapper.Map<SignUpResponseDto>(param);
+                await onboarding.SignUp(signUp);
+                var customerToReturn = mapper.Map<SignUpResponseDto>(signUp);
                 return CreatedAtRoute("GetCustomer", new { customerToReturn.CustomerId },
                         new DefaultResponse<SignUpResponseDto>
                         {
@@ -124,8 +123,8 @@ namespace SharpGas.Controllers
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
-        [HttpGet("api/Onboarding/{CustomerId}", Name = "GetCustomer")]
-        public async Task<ActionResult<DefaultResponse<SignUpResponseDto>>> GetCustomer(Guid customerId)
+        [HttpGet("api/Onboarding/{customerId}", Name = "GetCustomer")]
+        public async Task<ActionResult<DefaultResponse<SignUpResponseDto>>> GetCustomer(int customerId)
         {
             try
             {
