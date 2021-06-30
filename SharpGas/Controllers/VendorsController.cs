@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SharpGasCore.Models;
+using SharpGasData.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +12,77 @@ using System.Threading.Tasks;
 
 namespace SharpGas.Controllers
 {
+    /// <summary>
+    /// Controller for vendors information
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class VendorsController : ControllerBase
     {
-        // GET: api/<VendorsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IVendorRepository ivendorrepository;
+        private readonly ILogger<VendorsController> logger;
+        private readonly IMapper mapper;
+
+        /// <summary>
+        /// Vendors controllers
+        /// </summary>
+        /// <param name="ivendorrepository"></param>
+        /// <param name="logger"></param>
+        /// <param name="mapper"></param>
+        public VendorsController(IVendorRepository ivendorrepository, ILogger<VendorsController> logger,
+            IMapper mapper)
         {
-            return new string[] { "value1", "value2" };
+            this.ivendorrepository = ivendorrepository;
+            this.logger = logger;
+            this.mapper = mapper;
+        }
+        /// <summary>
+        /// Get all active vendors avaailable
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<DefaultResponse<IEnumerable<VendorsResponseDto>>>> Get()
+        {
+            try
+            {
+                var vendorList = await ivendorrepository.GetAllVendors();
+                if (!vendorList.Any())
+                {
+                    return NotFound(new DefaultResponse<IEnumerable<VendorsResponseDto>> { Message = "No active vendors found" });
+                }
+                else
+                {
+                    return Ok(new DefaultResponse<IEnumerable<VendorsResponseDto>>
+                    {
+                        Message = "All vendors successfully returned",
+                        Data = mapper.Map<IEnumerable<VendorsResponseDto>>(vendorList)
+                    }); ;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Exception occurred at VendorsController {nameof(Get)} method");
+                return StatusCode(500, new DefaultResponse<IEnumerable<VendorsResponseDto>>
+                {
+                    Message = "System Error, Please try again later"
+                });
+            }
         }
 
         // GET api/<VendorsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        //[HttpGet("{Country}/{State}/{LGA}")]
+        [HttpGet("byCountryDetails")]
+        public string Get(string country, string state, string lga)
         {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return "value";
         }
 
@@ -38,10 +98,5 @@ namespace SharpGas.Controllers
         {
         }
 
-        // DELETE api/<VendorsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

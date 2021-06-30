@@ -16,10 +16,11 @@ using SharpGasData.Services;
 
 namespace SharpGas.Controllers
 {
-    //[Authorize]
+
     /// <summary>
     /// Onboard shapgas customers
     /// </summary>
+    [Authorize]
     [ApiController]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OnboardingController : ControllerBase
@@ -35,6 +36,7 @@ namespace SharpGas.Controllers
         /// </summary>
         /// <param name="onboarding"></param>
         /// <param name="mapper"></param>
+        /// <param name="logger"></param>
         public OnboardingController(IOnboardingRepository onboarding,
             IMapper mapper, ILogger<OnboardingController> logger)
         {

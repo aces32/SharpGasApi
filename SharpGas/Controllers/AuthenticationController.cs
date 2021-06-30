@@ -29,6 +29,7 @@ namespace SharpGas.Controllers
         /// </summary>
         /// <param name="authenticationService"></param>
         /// <param name="authenticationRepository"></param>
+        /// <param name="logger"></param>
         public AuthenticationController(AuthenticationService authenticationService,
             IAuthenticationRepository authenticationRepository, ILogger<AuthenticationController> logger)
         {

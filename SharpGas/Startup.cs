@@ -66,6 +66,7 @@ namespace SharpGas
             services.AddScoped<IOnboardingRepository, OnboardingRepository>();
             services.AddScoped<IGasRepository, GasRepository>();
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddScoped<IVendorRepository, VendorRepository>();
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

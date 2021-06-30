@@ -112,7 +112,6 @@ C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\SharpGasData.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\Application.Logging.pdb
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\bin\Debug\netcoreapp3.1\SharpGasCore.pdb
-C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\SharpGas.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\staticwebassets\SharpGas.StaticWebAssets.Manifest.cache
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\staticwebassets\SharpGas.StaticWebAssets.xml
 C:\Users\Ayo\Documents\Projects\SharpGas .NetCore\SharpGas\obj\Debug\netcoreapp3.1\scopedcss\bundle\SharpGas.styles.css

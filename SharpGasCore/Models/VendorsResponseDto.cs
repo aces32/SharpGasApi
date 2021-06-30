@@ -1,14 +1,11 @@
-﻿using SharpGasData.Entites;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SharpGasData.Entities
+namespace SharpGasCore.Models
 {
-    public class Vendors
+    public class VendorsResponseDto
     {
-        [Key]
         public int VendorID { get; set; }
         public string VendorName { get; set; }
         public string VendorAddress { get; set; }
@@ -17,10 +14,5 @@ namespace SharpGasData.Entities
         public string VendorLGA { get; set; }
         public string VendorEmail { get; set; }
         public string VendorMobileNo { get; set; }
-        public byte[] VendorPassword { get; set; }
-        public string VendorType { get; set; }
-        public bool Active { get; set; }
-        public ICollection<VendorGasMap> VendorGasMap { get; set; }
-
     }
 }

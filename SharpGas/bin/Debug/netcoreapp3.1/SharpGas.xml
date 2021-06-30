@@ -15,6 +15,7 @@
             </summary>
             <param name="authenticationService"></param>
             <param name="authenticationRepository"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:SharpGas.Controllers.AuthenticationController.Authenticate(SharpGas.Encryption.UserCredentials)">
             <summary>
@@ -28,7 +29,7 @@
             endpoint to store gas weight at specific intervals of time
             </summary>
         </member>
-        <member name="M:SharpGas.Controllers.GasController.#ctor(SharpGasData.Services.IGasRepository,AutoMapper.IMapper)">
+        <member name="M:SharpGas.Controllers.GasController.#ctor(SharpGasData.Services.IGasRepository,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{SharpGas.Controllers.GasController})">
             <summary>
             GasController
             </summary>
@@ -60,6 +61,7 @@
             </summary>
             <param name="onboarding"></param>
             <param name="mapper"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:SharpGas.Controllers.OnboardingController.SharpGasLogin(SharpGasCore.Models.LoginDto)">
             <summary>
@@ -80,6 +82,25 @@
             Endpoint to get already or newly created customers based on customerid
             </summary>
             <param name="customerId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpGas.Controllers.VendorsController">
+            <summary>
+            Controller for vendors information
+            </summary>
+        </member>
+        <member name="M:SharpGas.Controllers.VendorsController.#ctor(SharpGasData.Services.IVendorRepository,Microsoft.Extensions.Logging.ILogger{SharpGas.Controllers.VendorsController},AutoMapper.IMapper)">
+            <summary>
+            Vendors controllers
+            </summary>
+            <param name="ivendorrepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SharpGas.Controllers.VendorsController.Get">
+            <summary>
+            Get all active vendors avaailable
+            </summary>
             <returns></returns>
         </member>
         <member name="T:SharpGas.Encryption.UserService">
